@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote</title>
+
+    <style>
+
+        .widget {
+            padding: 5px 5px ;
+            color: #000000;
+            text-align: center;
+                max-width: 95%;
+            margin: auto;
+            font-variant-caps: petite-caps;
+            font-size: 2em;
+
+        }
+
+        div {
+             width: 95%;
+             min-height: 100px;
+
+            background:
+                linear-gradient(to right, black 4px, transparent 4px) 0 0,
+                linear-gradient(to right, black 4px, transparent 4px) 0 100%,
+                linear-gradient(to left, black 4px, transparent 4px) 100% 0,
+                linear-gradient(to left, black 4px, transparent 4px) 100% 100%,
+                linear-gradient(to bottom, black 4px, transparent 4px) 0 0,
+                linear-gradient(to bottom, black 4px, transparent 4px) 100% 0,
+                linear-gradient(to top, black 4px, transparent 4px) 0 100%,
+                linear-gradient(to top, black 4px, transparent 4px) 100% 100%;
+
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+}
+
+     
+    </style>
+</head>
+<body>
+
+    <div class="widget" id="widget"></div>
+
+
+<script>
+
+const quotes = [
+  // DISCIPLINE & ACTION
+  "Action cures fear. Inaction feeds it.",
+  "Do it now. The future is owned by executors.",
+  "You don’t need motivation. You need discipline.",
+  "If you wait for perfect conditions, you’ll never start.",
+  "Consistency beats intensity every single time.",
+  "Dreams don’t work unless you do.",
+  "Excuses sound best to the person making them.",
+  "Do the work even when you don’t feel like it.",
+  "Comfort is the enemy of progress.",
+  "Execution separates winners from talkers.",
+
+  // FOCUS
+  "Focus is saying no to things that don’t matter.",
+  "Your future is created by what you focus on daily.",
+  "Distraction is the tax you pay for lack of clarity.",
+  "Where attention goes, results follow.",
+  "Multitasking is productivity’s biggest lie.",
+  "Protect your focus like your income depends on it — because it does.",
+  "Deep work builds rare skills.",
+  "You don’t lack time, you lack focus.",
+  "Busy is not the same as productive.",
+  "One focused hour beats ten distracted ones.",
+
+  // PROCRASTINATION KILLERS
+  "Later is a dangerous lie.",
+  "Procrastination is arrogance disguised as comfort.",
+  "If it matters, do it today.",
+  "Future you is begging present you to start.",
+  "The cost of delay is higher than the cost of effort.",
+  "Start before you’re ready.",
+  "Thinking without action is self-deception.",
+  "Momentum starts with the first uncomfortable step.",
+  "You don’t procrastinate tasks, you procrastinate discomfort.",
+  "Done is better than perfect.",
+
+  // MONEY & WEALTH MINDSET
+  "Money follows value, not wishes.",
+  "Skills pay the bills.",
+  "Wealth is built quietly, not loudly.",
+  "Poor planning is expensive.",
+  "Time is more valuable than money — invest it wisely.",
+  "You get paid in proportion to the problems you solve.",
+  "Rich people buy time. Poor people sell it.",
+  "Income grows when skills compound.",
+  "Money respects speed and decisiveness.",
+  "Cash is a result, not a goal.",
+
+  // GROWTH & SELF-MASTERY
+  "Your habits decide your future.",
+  "Growth begins where comfort ends.",
+  "What you do daily matters more than what you do occasionally.",
+  "You don’t rise to goals, you fall to systems.",
+  "Small wins compound into massive results.",
+  "The pain of discipline is cheaper than the pain of regret.",
+  "Your standards determine your outcomes.",
+  "If you want more, become more.",
+  "Hard things build strong people.",
+  "You become what you repeatedly practice.",
+
+  // CONTENT & CREATORS
+  "Create more than you consume.",
+  "Content compounds like interest.",
+  "The internet rewards consistency, not perfection.",
+  "Publish even when it feels average.",
+  "Your voice improves through repetition.",
+  "No one remembers drafts — only outputs.",
+  "Content is leverage.",
+  "Visibility beats talent when talent hides.",
+  "Document, don’t wait to be perfect.",
+  "Your future audience is built one post at a time.",
+
+  // TIME & LIFE
+  "Your calendar reveals your priorities.",
+  "Wasted time is wasted life.",
+  "You can always make more money, not more time.",
+  "Life rewards urgency.",
+  "Average days create average lives.",
+  "Every day is a vote for your future.",
+  "Time doesn’t heal — action does.",
+  "Live deliberately, not reactively.",
+  "Your daily routine writes your destiny.",
+  "How you spend today decides tomorrow.",
+
+  // CONFIDENCE & MINDSET
+  "Confidence is built by keeping promises to yourself.",
+  "Self-belief grows through action.",
+  "Doubt disappears with execution.",
+  "You earn confidence by doing hard things.",
+  "Stop negotiating with weakness.",
+  "Your mindset decides your ceiling.",
+  "Fear shrinks when faced head-on.",
+  "Strong minds create strong outcomes.",
+  "You don’t need permission to start.",
+  "Believe less, execute more.",
+
+  // WORK ETHIC
+  "Hard work works when done daily.",
+  "Outwork yesterday.",
+  "Talent is useless without effort.",
+  "Grind quietly, let results speak.",
+  "Work ethic beats luck.",
+  "The grind compounds.",
+  "Effort today buys freedom tomorrow.",
+  "Nobody owes you success.",
+  "Earn your confidence through work.",
+  "Sweat builds credibility.",
+
+  // LONG-TERM THINKING
+  "Short-term comfort destroys long-term potential.",
+  "Think in decades, act daily.",
+  "Patience with persistence wins.",
+  "Compounding rewards the consistent.",
+  "Slow progress is still progress.",
+  "Play long-term games with long-term people.",
+  "Great things are built brick by brick.",
+  "Longevity beats speed without direction.",
+  "Daily discipline creates future freedom.",
+  "Stay patient, stay relentless.",
+
+  // REALITY CHECK
+  "Nobody is coming to save you.",
+  "Results don’t care about intentions.",
+  "Life rewards courage, not excuses.",
+  "If you don’t decide, circumstances will.",
+  "The market rewards value, not effort alone.",
+  "Wishful thinking doesn’t scale.",
+  "Comfort is rented, discipline is owned.",
+  "Nobody sees the work — only the result.",
+  "You pay now or you pay later.",
+  "Success is rented daily.",
+
+  // FINAL PUSH
+  "Start now. Adjust later.",
+  "Take action before confidence arrives.",
+  "Move first, figure it out along the way.",
+  "One step today beats planning tomorrow.",
+  "Your future self will thank you for starting now.",
+  "Momentum beats motivation.",
+  "Do the hard thing first.",
+  "Execution is the ultimate advantage.",
+  "Decide. Commit. Execute.",
+  "Win the day — repeatedly."
+];
+
+
+const INTERVAL = 86400000;
+
+function dispalyQuote(){
+
+    document.getElementById('widget').innerHTML =quotes[0];
+    quotes.forEach((quote, i) => {
+        setTimeout(() => {
+            document.getElementById('widget').innerHTML =quote;
+        }, i * INTERVAL);  
+    });
+    }
+
+    function dispalyWidget() {
+        dispalyQuote();
+        setTimeout(dispalyWidget, quotes.length*INTERVAL);
+    }
+    dispalyWidget()
+
+</script>
+
+</body>
+</html>
